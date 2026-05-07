@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jalpai Site Manager</title>
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#fff8e7;color:#3a2206}
+header{padding:22px;background:linear-gradient(135deg,#fff3c4,#d4a72c);border-bottom:2px solid #b8860b}
+main{padding:16px;max-width:900px;margin:auto}
+.card{background:#fff;border:1px solid #e3c066;border-radius:18px;padding:16px;margin:14px 0;box-shadow:0 10px 30px rgba(184,134,11,.12)}
+label{display:block;font-weight:700;margin:12px 0 6px}
+input,textarea{width:100%;box-sizing:border-box;border:1px solid #d3ad47;border-radius:12px;padding:12px;font-size:16px;background:#fffdf4;color:#3a2206}
+textarea{min-height:90px}
+button{border:0;border-radius:14px;padding:13px 16px;background:#b8860b;color:white;font-weight:700;margin:8px 6px 8px 0}
+.small{font-size:13px;opacity:.75;line-height:1.6}
+</style>
+</head>
+<body>
+<header>
+<h1>Jalpai Site Manager</h1>
+<p>Edit website text. Then download the JSON file and upload it to <b>data/site-manager.json</b> in GitHub.</p>
+</header>
+<main>
+<section class="card">
+  <label>Committee Name</label><input id="committeeName">
+  <label>Slogan</label><input id="slogan">
+  <label>About Text</label><textarea id="aboutText"></textarea>
+  <label>Announcement Title</label><input id="announcementTitle">
+  <label>Announcement Message</label><textarea id="announcementMessage"></textarea>
+  <label>Contact Address</label><input id="address">
+  <button onclick="downloadJson()">Download Updated Data File</button>
+  <button onclick="loadExample()">Reset Example</button>
+</section>
+<section class="card">
+<h2>Simple use</h2>
+<p class="small">1. Open this page on your Android phone.<br>2. Tap browser menu ⋮ and choose “Add to Home screen”.<br>3. Edit text here.<br>4. Download the JSON file.<br>5. Upload/replace it in your GitHub repo at <b>data/site-manager.json</b>.<br>6. Your website will read the new data after the loader script is connected to index.html.</p>
+</section>
+</main>
+<script>
+let data=null;
+async function start(){
+  try{ data=await (await fetch("../data/site-manager.json?"+Date.now())).json(); }
+  catch(e){ loadExample(); return; }
+  fill();
+}
+function loadExample(){
+  data={
+    site:{committeeName:"Jalpai Ganesh Puja Committee",slogan:"Faith, Unity & Devotion in Every Heart"},
+    about:[{text:"Jalpai Ganesh Puja Committee celebrates Lord Ganesha with devotion and unity."}],
+    announcement:{enabled:true,title:"Welcome",message:"New update coming soon."},
+    contact:{address:"Jalpai, West Bengal, India"}
+  };
+  fill();
+}
+function fill(){
+  committeeName.value=data.site?.committeeName||"";
+  slogan.value=data.site?.slogan||"";
+  aboutText.value=data.about?.[0]?.text||"";
+  announcementTitle.value=data.announcement?.title||"";
+  announcementMessage.value=data.announcement?.message||"";
+  address.value=data.contact?.address||"";
+}
+function collect(){
+  data.site=data.site||{}; data.about=data.about||[{}]; data.announcement=data.announcement||{}; data.contact=data.contact||{};
+  data.site.committeeName=committeeName.value;
+  data.site.slogan=slogan.value;
+  data.about[0].text=aboutText.value;
+  data.announcement.enabled=true;
+  data.announcement.title=announcementTitle.value;
+  data.announcement.message=announcementMessage.value;
+  data.contact.address=address.value;
+  data.lastUpdated=new Date().toISOString().slice(0,10);
+}
+function downloadJson(){
+  collect();
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download="site-manager.json";
+  a.click();
+}
+if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js").catch(()=>{});}
+start();
+</script>
+</body>
+</html>

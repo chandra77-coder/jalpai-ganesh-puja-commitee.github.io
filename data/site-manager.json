@@ -1,0 +1,80 @@
+{
+  "site": {
+    "committeeName": "Jalpai Ganesh Puja Committee",
+    "shortName": "JGPC",
+    "year": "2026",
+    "heroEyebrow": "Sacred Celebration",
+    "heroOm": "ॐ श्री गणेशाय नमः",
+    "heroSubtitle": "Ganesh Chaturthi Celebration",
+    "slogan": "Faith, Unity & Devotion in Every Heart",
+    "dateText": "Ganesh Chaturthi 2026",
+    "festivalDate": "2026-09-14T00:00:00+05:30"
+  },
+  "theme": {
+    "mode": "light-golden",
+    "primaryGold": "#B8860B",
+    "brightGold": "#D4A72C",
+    "cream": "#FFF8E7",
+    "maroon": "#6E1F1F",
+    "text": "#3A2206",
+    "avoidBlack": true
+  },
+  "about": [
+    {
+      "icon": "🙏",
+      "title": "Our Devotion",
+      "text": "Jalpai Ganesh Puja Committee celebrates Lord Ganesha with devotion, discipline, respect, and togetherness."
+    },
+    {
+      "icon": "🤝",
+      "title": "Our Unity",
+      "text": "We bring families, youth, elders, and well-wishers together through worship, culture, service, and community work."
+    }
+  ],
+  "gallery": [
+    {
+      "title": "Puja Moment",
+      "image": "assets/gallery/photo-1.jpg",
+      "caption": "Beautiful devotional moment from our celebration."
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-09-14",
+      "time": "09:00 AM",
+      "title": "Ganesh Chaturthi Puja",
+      "description": "Main puja, aarti, and bhog distribution.",
+      "location": "Jalpai"
+    }
+  ],
+  "members": [
+    {
+      "name": "Committee Member",
+      "role": "Organizer",
+      "photo": "assets/members/member-1.jpg",
+      "phone": "",
+      "showPhone": false
+    }
+  ],
+  "links": {
+    "facebook": "https://www.facebook.com/",
+    "youtube": "",
+    "instagram": "",
+    "googleMap": "https://maps.app.goo.gl/qpbxT7VPQx34GCBR6",
+    "donation": ""
+  },
+  "contact": {
+    "address": "Jalpai, West Bengal, India",
+    "phone": "",
+    "email": "",
+    "whatsapp": ""
+  },
+  "announcement": {
+    "enabled": true,
+    "title": "Welcome to Jalpai Ganesh Puja Committee",
+    "message": "This website is ready for app-based content management.",
+    "buttonText": "View Updates",
+    "buttonLink": "#announcements"
+  },
+  "lastUpdated": "2026-05-07"
+}
