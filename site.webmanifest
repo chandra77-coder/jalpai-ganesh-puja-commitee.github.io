@@ -1,0 +1,16 @@
+{
+  "name": "Jalpai Ganesh Puja Committee",
+  "short_name": "JGPC",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff8e7",
+  "theme_color": "#123c69",
+  "description": "Official website of Jalpai Ganesh Puja Committee, Jalpai, Bagnan, Howrah.",
+  "icons": [
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "128x128",
+      "type": "image/svg+xml"
+    }
+  ]
+}
