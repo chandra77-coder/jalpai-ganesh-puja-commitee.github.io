@@ -1,0 +1,39 @@
+name: Apply SEO Fix
+
+on:
+  push:
+    paths:
+      - '.github/workflows/seo-fix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Insert SEO meta tags
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          p = Path('index.html')
+          s = p.read_text(encoding='utf-8')
+          seo = '''<title>Jalpai Ganesh Puja Committee | Official Website | Jalpai, Bagnan, Howrah</title><meta name="description" content="Official website of Jalpai Ganesh Puja Committee, Jalpai, Bagnan, Howrah. Get Ganesh Puja 2026 updates, activities, gallery photos, member ID verification, location and contact details."><meta name="keywords" content="Jalpai Ganesh Puja Committee, Jalpai Ganesh Puja, Ganesh Puja Bagnan, Ganesh Puja Howrah, Jalpai, Orphuli, Deulti Station Road, Ganesh Chaturthi 2026"><meta name="robots" content="index, follow, max-image-preview:large"><meta name="googlebot" content="index, follow, max-image-preview:large"><meta name="author" content="Jalpai Ganesh Puja Committee"><meta name="theme-color" content="#c98d18"><link rel="canonical" href="https://jalpaiganeshpujacommittee.in/"><meta property="og:type" content="website"><meta property="og:site_name" content="Jalpai Ganesh Puja Committee"><meta property="og:title" content="Jalpai Ganesh Puja Committee | Official Website"><meta property="og:description" content="Official website of Jalpai Ganesh Puja Committee, Jalpai, Bagnan, Howrah. Puja updates, gallery, member verification, location and contact details."><meta property="og:url" content="https://jalpaiganeshpujacommittee.in/"><meta property="og:image" content="https://jalpaiganeshpujacommittee.in/images/logo.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Jalpai Ganesh Puja Committee | Official Website"><meta name="twitter:description" content="Official website of Jalpai Ganesh Puja Committee, Jalpai, Bagnan, Howrah."><meta name="twitter:image" content="https://jalpaiganeshpujacommittee.in/images/logo.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Jalpai Ganesh Puja Committee","url":"https://jalpaiganeshpujacommittee.in/","logo":"https://jalpaiganeshpujacommittee.in/images/logo.png","description":"Official website of Jalpai Ganesh Puja Committee, Jalpai, Bagnan, Howrah.","address":{"@type":"PostalAddress","streetAddress":"Jalpai - Deulti Station Rd, Orphuli","addressRegion":"West Bengal","postalCode":"711303","addressCountry":"IN"}}</script>'''
+          start = s.find('<title>')
+          end = s.find('<link href="https://fonts.googleapis.com')
+          if start == -1 or end == -1:
+              raise SystemExit('Could not find head insertion points')
+          s = s[:start] + seo + s[end:]
+          s = s.replace('alt="logo"', 'alt="Jalpai Ganesh Puja Committee logo"', 1)
+          s = s.replace('alt="Current murti"', 'alt="Current Ganesh murti photo of Jalpai Ganesh Puja Committee"', 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit SEO fix
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Fix SEO meta tags for Google search result" || echo "No changes"
+          git push
