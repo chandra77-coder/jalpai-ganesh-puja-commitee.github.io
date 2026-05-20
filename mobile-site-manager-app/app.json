@@ -1,0 +1,18 @@
+{
+  "expo": {
+    "name": "JGPC Site Manager",
+    "slug": "jgpc-site-manager",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "in.jalpaiganeshpujacommittee.sitemanager"
+    },
+    "ios": {
+      "supportsTablet": true
+    }
+  }
+}
