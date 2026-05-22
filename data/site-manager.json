@@ -1,10 +1,11 @@
 {
   "site": {
-    "committeeName": "Jalpai Ganesh Puja Committee",
+    "committeeName": "জালপাই গণেশ পূজা কমিটি",
+    "englishName": "Jalpai Ganesh Puja Committee",
     "shortName": "JGPC",
     "year": "2026",
     "heroEyebrow": "Official Committee Website · 2026",
-    "heroSubtitle": "A bright official space for puja updates, activities, photo collection, member ID verification, location, and Facebook contact.",
+    "heroSubtitle": "Official website of জালপাই গণেশ পূজা কমিটি / Jalpai Ganesh Puja Committee. Puja updates, activities, gallery photos, member ID verification, location, and contact details.",
     "slogan": "একতার শক্তিতে ভক্তির পরিবেশ",
     "dateText": "Ganesh Chaturthi 2026",
     "festivalDate": "2026-09-14T00:00:00+05:30",
@@ -21,7 +22,7 @@
     "avoidBlack": true
   },
   "aboutHeading": "Organized with unity, respect, and devotion.",
-  "aboutIntro": "Jalpai Ganesh Puja Committee brings people together through puja arrangement, cultural participation, social support, and community connection.",
+  "aboutIntro": "জালপাই গণেশ পূজা কমিটি / Jalpai Ganesh Puja Committee brings people together through puja arrangement, cultural participation, social support, and community connection.",
   "about": [
     {
       "icon": "🙏",
@@ -84,6 +85,22 @@
     "message": "",
     "buttonText": "Open",
     "buttonLink": ""
+  },
+  "seo": {
+    "officialBengaliName": "জালপাই গণেশ পূজা কমিটি",
+    "officialEnglishName": "Jalpai Ganesh Puja Committee",
+    "description": "Official website of জালপাই গণেশ পূজা কমিটি / Jalpai Ganesh Puja Committee, Jalpai, Orphuli, Howrah, West Bengal. Ganesh Puja updates, gallery, member verification, location and contact details.",
+    "keywords": [
+      "জালপাই গণেশ পূজা কমিটি",
+      "Jalpai Ganesh Puja Committee",
+      "Jalpai Ganesh Puja",
+      "Ganesh Puja Jalpai",
+      "Ganesh Puja Howrah",
+      "Orphuli",
+      "Jalpai",
+      "Howrah",
+      "West Bengal"
+    ]
   },
   "lastUpdated": "2026-05-22"
 }
