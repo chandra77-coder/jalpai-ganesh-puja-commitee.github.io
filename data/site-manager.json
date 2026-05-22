@@ -3,12 +3,13 @@
     "committeeName": "Jalpai Ganesh Puja Committee",
     "shortName": "JGPC",
     "year": "2026",
-    "heroEyebrow": "Sacred Celebration",
-    "heroOm": "ॐ श्री गणेशाय नमः",
-    "heroSubtitle": "Ganesh Chaturthi Celebration",
-    "slogan": "Faith, Unity & Devotion in Every Heart",
+    "heroEyebrow": "Official Committee Website · 2026",
+    "heroSubtitle": "A bright official space for puja updates, activities, photo collection, member ID verification, location, and Facebook contact.",
+    "slogan": "একতার শক্তিতে ভক্তির পরিবেশ",
     "dateText": "Ganesh Chaturthi 2026",
-    "festivalDate": "2026-09-14T00:00:00+05:30"
+    "festivalDate": "2026-09-14T00:00:00+05:30",
+    "heroImage": "images/current-murti.svg",
+    "logo": "images/logo.png"
   },
   "theme": {
     "mode": "light-golden",
@@ -19,25 +20,40 @@
     "text": "#3A2206",
     "avoidBlack": true
   },
+  "aboutHeading": "Organized with unity, respect, and devotion.",
+  "aboutIntro": "Jalpai Ganesh Puja Committee brings people together through puja arrangement, cultural participation, social support, and community connection.",
   "about": [
     {
       "icon": "🙏",
-      "title": "Our Devotion",
-      "text": "Jalpai Ganesh Puja Committee celebrates Lord Ganesha with devotion, discipline, respect, and togetherness."
+      "title": "Puja Arrangement",
+      "text": "Clean and respectful puja planning for devotees and visitors."
+    },
+    {
+      "icon": "🎭",
+      "title": "Cultural Program",
+      "text": "Festival moments, local participation, and community memories."
     },
     {
       "icon": "🤝",
-      "title": "Our Unity",
-      "text": "We bring families, youth, elders, and well-wishers together through worship, culture, service, and community work."
+      "title": "Community Unity",
+      "text": "Members and supporters working together with respect and devotion."
     }
   ],
-  "gallery": [
+  "activities": [
     {
-      "title": "Puja Moment",
-      "image": "assets/gallery/photo-1.jpg",
-      "caption": "Beautiful devotional moment from our celebration."
+      "title": "Morning Puja",
+      "text": "Daily puja rituals and coordination."
+    },
+    {
+      "title": "Pushpanjali",
+      "text": "Flower offering arrangements for devotees."
+    },
+    {
+      "title": "Prasad Distribution",
+      "text": "Respectful distribution for visitors and community members."
     }
   ],
+  "gallery": [],
   "events": [
     {
       "date": "2026-09-14",
@@ -47,34 +63,27 @@
       "location": "Jalpai"
     }
   ],
-  "members": [
-    {
-      "name": "Committee Member",
-      "role": "Organizer",
-      "photo": "assets/members/member-1.jpg",
-      "phone": "",
-      "showPhone": false
-    }
-  ],
+  "members": [],
   "links": {
-    "facebook": "https://www.facebook.com/",
+    "facebook": "https://www.facebook.com/share/1X5xdwmynG/",
+    "facebook2": "https://www.facebook.com/share/1DuoGRjF2s/",
     "youtube": "",
     "instagram": "",
     "googleMap": "https://maps.app.goo.gl/qpbxT7VPQx34GCBR6",
     "donation": ""
   },
   "contact": {
-    "address": "Jalpai, West Bengal, India",
+    "address": "Jalpai - Deulti Station Rd, Orphuli, West Bengal 711303",
     "phone": "",
     "email": "",
     "whatsapp": ""
   },
   "announcement": {
-    "enabled": true,
-    "title": "Welcome to Jalpai Ganesh Puja Committee",
-    "message": "This website is ready for app-based content management.",
-    "buttonText": "View Updates",
-    "buttonLink": "#announcements"
+    "enabled": false,
+    "title": "",
+    "message": "",
+    "buttonText": "Open",
+    "buttonLink": ""
   },
-  "lastUpdated": "2026-05-07"
+  "lastUpdated": "2026-05-22"
 }
