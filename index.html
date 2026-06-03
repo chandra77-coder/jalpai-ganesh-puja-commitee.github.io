@@ -29,7 +29,18 @@ html,body{margin:0;height:100%;background:#1A0A00;color:#FFF8E7;font-family:syst
     const bin=atob(b64);
     const bytes=new Uint8Array(bin.length);
     for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
-    const html=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+    let html=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+    const correctMapLink='https://maps.app.goo.gl/SvKBz4gZxiSvCUji6';
+    html=html.replace(/https:\/\/maps\.app\.goo\.gl\/[A-Za-z0-9]+/g,correctMapLink);
+    html=html.replace(/Official FacebookGoogle Map/g,'Official Facebook · Google Map');
+    html=html.replace(
+      'Enter your member code to view your ID card.',
+      'Enter your member code to view your ID card.<br><small style="display:block;margin-top:10px;color:rgba(255,248,231,.82);font-weight:800;letter-spacing:.2px">Example: <strong>Chandra 2580</strong></small>'
+    );
+    html=html.replace(
+      /(<input\b(?=[^>]*(member|code|verify|id))(?=[^>]*type=["']?(text|search)?["']?)[^>]*)(>)/i,
+      (match,start,keyword,type,end)=>/\splaceholder\s*=/.test(match)?match:start+' placeholder="Example: Chandra 2580"'+end
+    );
     if(!html.includes('JGPC 2026') || !html.includes('ULTRA PREMIUM DESIGN SYSTEM')) throw new Error('Premium file verification failed.');
     document.open(); document.write(html); document.close();
   }catch(e){const el=document.getElementById('err'); el.style.display='block'; el.textContent='Could not load premium website: '+e.message; console.error(e);}
