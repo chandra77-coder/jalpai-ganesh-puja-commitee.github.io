@@ -24,26 +24,19 @@ html,body{margin:0;height:100%;background:#1A0A00;color:#FFF8E7;font-family:syst
   const files=[0,1,2,3,4,5,6,7,8].map(i=>'premium_parts/jgpc_premium_v2.part'+i+'.txt');
   try{
     if(!('DecompressionStream' in window)) throw new Error('This browser does not support the premium loader. Please update Chrome/Edge/Firefox/Safari.');
-    const parts=await Promise.all(files.map(async f=>{const r=await fetch(f+'?v=3',{cache:'no-store'}); if(!r.ok) throw new Error('Missing '+f); return (await r.text()).trim();}));
+    const parts=await Promise.all(files.map(async f=>{const r=await fetch(f+'?v=4',{cache:'no-store'}); if(!r.ok) throw new Error('Missing '+f); return (await r.text()).trim();}));
     const b64=parts.join('');
     const bin=atob(b64);
     const bytes=new Uint8Array(bin.length);
     for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
     let html=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
     const correctMapLink='https://maps.app.goo.gl/SvKBz4gZxiSvCUji6';
-    const memberExample='<div class="jgpc-member-example" style="display:inline-block;margin:14px auto 18px;padding:10px 18px;border-radius:999px;border:1px solid rgba(255,215,0,.45);background:rgba(255,215,0,.10);color:#FFD700;font-weight:900;letter-spacing:.3px;box-shadow:0 0 22px rgba(255,215,0,.12)">Example format: <strong>Chandra 2580</strong></div>';
     html=html.replace(/https:\/\/maps\.app\.goo\.gl\/[A-Za-z0-9]+/g,correctMapLink);
     html=html.replace(/Official FacebookGoogle Map/g,'Official Facebook · Google Map');
-    if(!html.includes('jgpc-member-example')){
-      html=html.replace(
-        /(Enter your Name and 4-digit Member Code to view your ID card|Enter your member code to view your ID card\.?)/i,
-        '$1'+memberExample
-      );
-    }
-    html=html.replace(
-      /(<input\b(?=[^>]*(member|code|verify|id))(?=[^>]*type=["']?(text|search)?["']?)[^>]*)(>)/i,
-      (match,start,keyword,type,end)=>/\splaceholder\s*=/.test(match)?match.replace(/placeholder=["'][^"']*["']/i,'placeholder="Example: Chandra 2580"'):start+' placeholder="Example: Chandra 2580"'+end
-    );
+    html=html.replace(/<div class=["']jgpc-member-example["'][\s\S]*?<\/div>/gi,'');
+    html=html.replace(/Enter your Name and 4-digit Member Code to view your ID card/gi,'Put your verified member code');
+    html=html.replace(/Enter your member code to view your ID card\.?/gi,'Put your verified member code');
+    html=html.replace(/placeholder=["'][^"']*(Chandra|Example|e\.g\.)[^"']*["']/gi,'placeholder="Put your verified member code"');
     if(!html.includes('JGPC 2026') || !html.includes('ULTRA PREMIUM DESIGN SYSTEM')) throw new Error('Premium file verification failed.');
     document.open(); document.write(html); document.close();
   }catch(e){const el=document.getElementById('err'); el.style.display='block'; el.textContent='Could not load premium website: '+e.message; console.error(e);}
