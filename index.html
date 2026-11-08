@@ -3,32 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Jalpai Ganesh Puja Committee 2026 | জালপাই গণেশ পূজা কমিটি</title>
-<meta name="description" content="Official website of Jalpai Ganesh Puja Committee — celebrating Ganesh Chaturthi 2026 on September 14 at Jalpai - Deulti Station Rd, Orphuli, West Bengal 711303.">
+<title>Jalpai Ganesh Puja Committee | জালপাই গণেশ পূজা কমিটি</title>
+<meta name="description" content="Official website of Jalpai Ganesh Puja Committee">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#c98d18">
 <link rel="canonical" href="https://jalpaiganeshpujacommittee.in/">
-<meta property="og:title" content="Jalpai Ganesh Puja Committee 2026">
-<meta property="og:description" content="Celebrating Ganesh Chaturthi 2026 — September 14, Jalpai, Orphuli, Howrah, West Bengal">
-<meta property="og:url" content="https://jalpaiganeshpujacommittee.in/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://jalpaiganeshpujacommittee.in/images/photo1.jpg">
 <style>
-html,body{margin:0;height:100%;background:#1A0A00;color:#FFF8E7;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}.loader{min-height:100%;display:grid;place-items:center;text-align:center;padding:24px;background:radial-gradient(circle at 50% 25%,rgba(201,141,24,.18),transparent 42%),linear-gradient(180deg,#2d1200,#1A0A00)}.box{max-width:560px;border:1px solid rgba(201,141,24,.35);border-radius:24px;padding:34px;background:rgba(0,0,0,.22);box-shadow:0 20px 70px rgba(0,0,0,.4)}.om{font-size:56px;color:#FFD700;filter:drop-shadow(0 0 18px rgba(255,215,0,.55));animation:p 1.6s ease-in-out infinite}.brand{font-family:serif;font-size:24px;color:#FFD700;margin:10px 0}.muted{color:rgba(255,248,231,.7);line-height:1.7}.err{color:#ffd0be;border:1px solid rgba(220,40,20,.4);background:rgba(160,0,0,.18);border-radius:14px;padding:14px;margin-top:18px;display:none}@keyframes p{50%{transform:scale(1.08);opacity:.75}}
+html,body{margin:0;height:100%;background:#1A0A00;color:#FFF8E7;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}.loader{min-height:100%;display:grid;place-items:center;text-align:center;padding:24px;box-sizing:border-box}.box{max-width:560px;padding:32px;border:1px solid #c98d18;border-radius:20px;background:#281305;box-shadow:0 12px 40px #0008}.om{font-size:48px;color:#f4bd45}.brand{font-size:24px;font-weight:700;margin:8px}.muted{color:#e8c99a}.error{display:none;color:#ffb4a2;margin-top:16px}
 </style>
 </head>
 <body>
-<div class="loader"><div class="box"><div class="om">ॐ</div><div class="brand">Jalpai Ganesh Puja Committee</div><div class="muted">Loading premium website design...</div><div id="err" class="err"></div></div></div>
+<div class="loader"><div class="box"><div class="om">ॐ</div><div class="brand">Jalpai Ganesh Puja Committee</div><div class="muted">Loading premium website design...</div><div id="err" class="error"></div></div></div>
 <script>
 (async()=>{
   const files=[0,1,2,3,4,5,6,7,8].map(i=>'premium_parts/jgpc_premium_v2.part'+i+'.txt');
   try{
     if(!('DecompressionStream' in window)) throw new Error('This browser does not support the premium loader. Please update Chrome/Edge/Firefox/Safari.');
-    const parts=await Promise.all(files.map(async f=>{const r=await fetch(f+'?v=4',{cache:'no-store'}); if(!r.ok) throw new Error('Missing '+f); return (await r.text()).trim();}));
-    const b64=parts.join('');
-    const bin=atob(b64);
+    const parts=await Promise.all(files.map(async f=>{const r=await fetch(f+'?v=4',{cache:'no-store'});if(!r.ok)throw new Error('Missing '+f);return(await r.text()).trim();}));
+    const bin=atob(parts.join(''));
     const bytes=new Uint8Array(bin.length);
-    for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+    for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
     let html=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
     const correctMapLink='https://maps.app.goo.gl/SvKBz4gZxiSvCUji6';
     html=html.replace(/https:\/\/maps\.app\.goo\.gl\/[A-Za-z0-9]+/g,correctMapLink);
@@ -37,9 +31,14 @@ html,body{margin:0;height:100%;background:#1A0A00;color:#FFF8E7;font-family:syst
     html=html.replace(/Enter your Name and 4-digit Member Code to view your ID card/gi,'Put your verified member code');
     html=html.replace(/Enter your member code to view your ID card\.?/gi,'Put your verified member code');
     html=html.replace(/placeholder=["'][^"']*(Chandra|Example|e\.g\.)[^"']*["']/gi,'placeholder="Put your verified member code"');
-    if(!html.includes('JGPC 2026') || !html.includes('ULTRA PREMIUM DESIGN SYSTEM')) throw new Error('Premium file verification failed.');
-    document.open(); document.write(html); document.close();
-  }catch(e){const el=document.getElementById('err'); el.style.display='block'; el.textContent='Could not load premium website: '+e.message; console.error(e);}
+    // Reactivate the countdown for Ganesh Chaturthi 2027 (4 September, India).
+    html=html.replace(/2026-09-14/g,'2027-09-04');
+    html=html.replace(/September\s+14,?\s+2026/gi,'September 4, 2027');
+    html=html.replace(/Sep\s+14,?\s+2026/gi,'Sep 4, 2027');
+    html=html.replace(/new Date\(\s*2026\s*,\s*8\s*,\s*14\s*\)/g,'new Date(2027, 8, 4)');
+    if(!html.includes('JGPC 2026')||!html.includes('ULTRA PREMIUM DESIGN SYSTEM'))throw new Error('Premium file verification failed.');
+    document.open();document.write(html);document.close();
+  }catch(e){const el=document.getElementById('err');el.style.display='block';el.textContent='Could not load premium website: '+e.message;console.error(e);}
 })();
 </script>
 </body>
