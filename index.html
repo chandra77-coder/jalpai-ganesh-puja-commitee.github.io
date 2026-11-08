@@ -9,7 +9,7 @@
 <meta name="theme-color" content="#c98d18">
 <link rel="canonical" href="https://jalpaiganeshpujacommittee.in/">
 <style>
-html,body{margin:0;height:100%;background:#1A0A00;color:#FFF8E7;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}.loader{min-height:100%;display:grid;place-items:center;text-align:center;padding:24px;box-sizing:border-box}.box{max-width:560px;padding:32px;border:1px solid #c98d18;border-radius:20px;background:#281305;box-shadow:0 12px 40px #0008}.om{font-size:48px;color:#f4bd45}.brand{font-size:24px;font-weight:700;margin:8px}.muted{color:#e8c99a}.error{display:none;color:#ffb4a2;margin-top:16px}
+html,body{margin:0;height:100%;background:#1A0A00;color:#FFF8E7;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif}.loader{min-height:100%;display:grid;place-items:center;text-align:center}.box{max-width:min(92vw,700px);padding:20px 22px}.om{font-size:52px;line-height:1;color:#f6c869;margin-bottom:10px}.brand{font-size:clamp(1.5rem,2.6vw,2.6rem);font-weight:800;letter-spacing:.04em}.muted{opacity:.8;margin-top:8px}.error{display:none;margin-top:18px;color:#ffb4a2;font-weight:700}.loading{display:inline-block;width:22px;height:22px;border:2px solid rgba(246,200,105,.55);border-top-color:#f6c869;border-radius:50%;animation:spin 1s linear infinite}.@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
@@ -26,6 +26,7 @@ html,body{margin:0;height:100%;background:#1A0A00;color:#FFF8E7;font-family:syst
     let html=await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
     const correctMapLink='https://maps.app.goo.gl/25JJh4d6gbogQjNV7';
     html=html.replace(/https:\/\/maps\.app\.goo\.gl\/[A-Za-z0-9]+/g,correctMapLink);
+    html=html.replace(/https?:\/\/(?:www\.)?(?:google\.[a-z.]+\/maps|maps\.google\.[a-z.]+)(?:[^\s"'<>]*)/gi,correctMapLink);
     html=html.replace(/Official FacebookGoogle Map/g,'Official Facebook · Google Map');
     html=html.replace(/<div class=["']jgpc-member-example["'][\s\S]*?<\/div>/gi,'');
     html=html.replace(/Enter your Name and 4-digit Member Code to view your ID card/gi,'Put your verified member code');
